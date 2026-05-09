@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+backend/app/data/feedback.json
+
+# Node
+node_modules/
+frontend/dist/
+
+# Env
+.env.local
+.env
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
