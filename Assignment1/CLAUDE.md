@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Status
 
-This is an AI Bootcamp (Maven) portfolio project. The implementation plan is in [plan.md](plan.md). As of the start of this project, the app code has not been built yet — `openai-chatkit-starter-app/` is a read-only reference clone and is not part of the deployable app.
+This is an AI Bootcamp (Maven) portfolio project. The implementation plan is in [plan.md](plan.md). The app is fully implemented and deployable — `openai-chatkit-starter-app/` is a read-only reference clone and is not part of the deployable app.
 
 ## Architecture
 
@@ -46,7 +46,22 @@ docker compose down        # stop
 
 After any code change, rerun `docker compose up --build`. Layer caching makes rebuilds fast once `npm ci` and `pip install` layers are warm.
 
+### Local development (without Docker)
+
+Run backend and frontend in separate terminals:
+
+```bash
+# Terminal 1 — backend (from project root)
+pip install -r backend/requirements.txt
+uvicorn backend.app.main:app --reload --reload-dir backend --port 8000
+
+# Terminal 2 — frontend (Vite dev server on :3000, proxies /api to :8000)
+cd frontend && npm ci && npm run dev
+```
+
 ### Tests
+
+Run all tests from the project root (imports rely on `backend/` being a package on the path):
 
 ```bash
 # All backend tests
@@ -65,12 +80,6 @@ python -m pytest backend/tests/test_feedback.py::test_submit_feedback_returns_20
 cd frontend && npm run build    # output → frontend/dist/
 ```
 
-### Frontend build (standalone, for inspection only)
-
-```bash
-cd frontend && npm run build    # output → frontend/dist/
-```
-
 ## Environment Variables
 
 | Variable | Where | Purpose |
@@ -78,13 +87,15 @@ cd frontend && npm run build    # output → frontend/dist/
 | `OPENAI_API_KEY` | Backend | OpenAI auth — never exposed to frontend |
 | `CHATKIT_WORKFLOW_ID` | Backend | Agent Builder workflow (`wf_...`) |
 | `ENVIRONMENT` | Backend | Set to `production` to enable secure cookies |
+| `CHATKIT_API_BASE` | Backend | Override OpenAI API base URL (optional; defaults to `https://api.openai.com`) |
 | `VITE_API_URL` | Frontend (dev) | Vite proxy target; defaults to `http://localhost:8000` |
+| `VITE_CHATKIT_WORKFLOW_ID` | Frontend (optional) | Client-side workflow ID override; if set, sent in the session request body. Backend also reads this as a fallback when `CHATKIT_WORKFLOW_ID` is unset. |
 
 Copy `.env.example` → `.env.local` for local dev. `.env.local` is gitignored.
 
 ## Reference Repo
 
-`openai-chatkit-starter-app/managed-chatkit/` is the upstream reference. The key files adapted from it are:
+`openai-chatkit-starter-app/managed-chatkit/` is the upstream reference (`openai-chatkit-starter-app/chatkit/` is an alternate non-managed variant, not used here). The key files adapted from it are:
 
 - `backend/app/routers/chatkit.py` ← `managed-chatkit/backend/app/main.py`
 - `frontend/src/lib/chatkitSession.ts` ← `managed-chatkit/frontend/src/lib/chatkitSession.ts`

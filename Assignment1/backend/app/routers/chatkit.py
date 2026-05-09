@@ -46,8 +46,12 @@ async def create_session(request: Request) -> JSONResponse:
 
     payload = _parse_json(upstream)
     if not upstream.is_success:
-        msg = (payload.get("error") if isinstance(payload, Mapping) else None) or upstream.reason_phrase
-        return _respond({"error": msg or "Upstream error"}, upstream.status_code, new_cookie)
+        err = payload.get("error") if isinstance(payload, Mapping) else None
+        if isinstance(err, Mapping):
+            msg = err.get("message") or upstream.reason_phrase
+        else:
+            msg = err or upstream.reason_phrase
+        return _respond({"error": str(msg) if msg else "Upstream error"}, upstream.status_code, new_cookie)
 
     client_secret = payload.get("client_secret") if isinstance(payload, Mapping) else None
     if not client_secret:
