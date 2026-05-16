@@ -1,4 +1,6 @@
 openai-agents
-gradio
+gradio==4.44.1
+huggingface_hub<1.0
+eval_type_backport
 python-dotenv
 nest_asyncio
