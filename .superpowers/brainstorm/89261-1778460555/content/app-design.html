@@ -1,0 +1,65 @@
+<h2>Campaign Generator — App Design</h2>
+<p class="subtitle">How the Gradio app will look and behave</p>
+
+<div class="mockup" style="max-width:720px;margin:0 auto">
+  <div class="mockup-header">campaign-web-app · http://localhost:7860</div>
+  <div class="mockup-body" style="padding:24px;background:#fff">
+
+    <!-- Title -->
+    <div style="text-align:center;margin-bottom:24px">
+      <h3 style="margin:0;font-size:22px;color:#111">🎯 Creative Advertising Campaign Generator</h3>
+      <p style="color:#666;margin:6px 0 0;font-size:13px">Powered by OpenAI Agents SDK · Creative Director → Strategist → Copywriter</p>
+    </div>
+
+    <!-- Input -->
+    <div style="margin-bottom:16px">
+      <div style="font-size:12px;font-weight:600;color:#374151;margin-bottom:6px">Campaign Brief</div>
+      <div style="border:1px solid #d1d5db;border-radius:8px;padding:12px;color:#6b7280;font-size:13px;background:#fafafa">
+        Launch a campaign for a new eco-friendly water bottle in Bali.
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div style="margin-bottom:20px">
+      <div style="background:#f97316;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;display:inline-block;cursor:pointer">
+        ▶ Generate Campaign
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+      <!-- Tab headers -->
+      <div style="display:flex;background:#f9fafb;border-bottom:1px solid #e5e7eb">
+        <div style="padding:10px 18px;font-size:13px;font-weight:600;color:#fff;background:#10a37f;border-right:1px solid #e5e7eb">🎨 Ideas</div>
+        <div style="padding:10px 18px;font-size:13px;color:#6b7280;border-right:1px solid #e5e7eb">📊 Strategy</div>
+        <div style="padding:10px 18px;font-size:13px;color:#6b7280">✍️ Tweets</div>
+      </div>
+      <!-- Active tab content -->
+      <div style="padding:16px;font-size:13px;line-height:1.7;color:#374151;min-height:160px">
+        <strong>1. PureFlow</strong> — <em>Where Bali meets purity</em><br>
+        A surf-culture campaign built around Bali's coastline, positioning PureFlow as the bottle for people who love the ocean and protect it. Target: eco-conscious travelers aged 25–40.<br><br>
+        <strong>2. OceanSip</strong> — <em>Drink clean, live clean</em><br>
+        A lifestyle campaign targeting digital nomads and wellness tourists visiting Bali. Focuses on zero-waste messaging and local partnerships with beach cleanup initiatives.<br><br>
+        <strong>3. TidalRise</strong> — <em>Rise with the tide, protect the tide</em><br>
+        An activism-led campaign for younger audiences, tying each bottle purchase to a beach cleanup pledge. Shareable social challenge format.
+      </div>
+    </div>
+
+    <!-- Footer note -->
+    <div style="margin-top:12px;font-size:11px;color:#9ca3af;text-align:center">
+      Each tab fills in as the corresponding agent completes · avg. ~10–15 seconds total
+    </div>
+
+  </div>
+</div>
+
+<div style="margin-top:24px;max-width:720px;margin-left:auto;margin-right:auto">
+  <h3 style="font-size:15px;margin-bottom:12px">File structure</h3>
+  <div style="background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:16px;font-family:monospace;font-size:13px;line-height:1.8">
+    <span style="color:#569cd6">campaign-web-app/</span><br>
+    &nbsp;&nbsp;├── <span style="color:#9cdcfe">app.py</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#6a9955">← agents + Gradio UI (single file)</span><br>
+    &nbsp;&nbsp;├── <span style="color:#9cdcfe">requirements.txt</span> &nbsp;&nbsp;<span style="color:#6a9955">← openai-agents, gradio, python-dotenv</span><br>
+    &nbsp;&nbsp;├── <span style="color:#9cdcfe">.env.example</span><br>
+    &nbsp;&nbsp;└── <span style="color:#9cdcfe">.venv/</span>
+  </div>
+</div>
