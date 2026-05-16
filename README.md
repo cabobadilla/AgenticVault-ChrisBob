@@ -21,9 +21,15 @@ This bootcamp covers the full stack of Agentic AI engineering — from building 
 ```
 AgenticVault-ChrisBob/
 │
-├── Assignment1/          # Week 1 — Build Multi-Agent Routing System
+├── Assignment1/          # Week 1 — Multi-Agent Customer Support Routing System
+│   ├── backend/          # FastAPI backend with OpenAI Agents SDK
+│   ├── frontend/         # React/TypeScript UI
+│   └── docs/             # Design specs and implementation plans
 │
-├── (more assignments coming as the bootcamp progresses)
+├── Assignment2/          # Week 2 — Creative Advertising Multi-Agent Pipeline
+│   ├── creative_advertising_agents.ipynb  # Multi-agent notebook (Parts A & B)
+│   ├── campaign-web-app/ # Gradio web UI with tabbed agent outputs
+│   └── docs/             # Design specs and implementation plans
 │
 └── README.md
 ```
@@ -32,12 +38,26 @@ AgenticVault-ChrisBob/
 
 | # | Week | Topic | Folder |
 |---|------|-------|--------|
-| 1 | 1 | Multi-Agent Routing System | [`Assignment1/`](./Assignment1) |
-| 2 | 2 | Claude & Multi-Agents with OpenAI Agents SDK | *coming soon* |
+| 1 | 1 | Multi-Agent Customer Support Routing System | [`Assignment1/`](./Assignment1) |
+| 2 | 2 | Creative Advertising Multi-Agent Pipeline + Gradio Web App | [`Assignment2/`](./Assignment2) |
 | 3 | 3 | *TBD* | *coming soon* |
 | 4 | 4 | *TBD* | *coming soon* |
 | 5 | 5 | *TBD* | *coming soon* |
 | 6 | 6 | Capstone Project | *coming soon* |
+
+### Assignment 2 Highlights
+
+**Week 2 — Creative Advertising Multi-Agent Pipeline**
+
+Built a sequential multi-agent advertising pipeline using the OpenAI Agents SDK:
+
+- **Creative Director** → generates 3–5 distinct campaign concepts from a product brief
+- **Strategist** → selects the strongest concept and defines target audience & channels
+- **Copywriter** → produces final ad copy (headline, body, CTA) tailored to the strategy
+
+Delivered in two parts:
+- **Part A** — Jupyter notebook pipeline (`creative_advertising_agents.ipynb`)
+- **Part B** — Gradio web app (`campaign-web-app/`) with tabbed outputs for each agent stage
 
 ## 🛠️ Tech Stack
 
